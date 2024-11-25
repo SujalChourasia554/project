@@ -2,20 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+#customSliderLeft::-webkit-slider-thumb {
+    pointer-events:auto;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    -webkit-appearance:none;
+    @apply bg-color-orange;
+}
+#customSliderRight::-webkit-slider-thumb {
+    pointer-events:auto;
+    width:100px;
+    height: 50px;
+    -webkit-appearance:none;
+    background-image: url('/images/car.png');
+    background-size: cover;
+    background-position: center;
+}
+#scrollBar::-webkit-scrollbar {
+    width: 2px;
+}
+#scrollBar::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 30px;
+}
+#scrollBar::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 5px;
+}
+ 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.animate-fadeIn {
+    animation: fadeIn 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes underline-left-to-right {
+    0% {
+        width: 0;
+        opacity: 0; 
+    }
+    50%{
+        opacity: 0.5;
+    }
+    
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes underline-right-to-left {
+    0% {
+        width: 100%;
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100% {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.animate-left-to-right {
+    animation: underline-left-to-right 0.4s ease-in forwards;
+}
+
+.animate-right-to-left {
+    animation: underline-right-to-left 0.4s ease-out  forwards;
+}  
+  
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeOut {
+    animation: fadeOut 0.3s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+
+@keyframes pulse {
+  0%{
+    opacity: .2;
   }
+  100%  {
+    opacity: 1;
+  }
+}.animate-pulse {
+    animation: pulse .1s cubic-bezier(0.4, 0, 0.6, 1) forwards;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+.custom-gradient {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 70%);
 }
